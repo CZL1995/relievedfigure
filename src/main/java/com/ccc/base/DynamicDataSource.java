@@ -36,11 +36,7 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
                 sb.append(new String(b,0,readbytes));
             }
             in.close();
-
-
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+sb.toString()+"bbbbbbbbb"+data);
         } catch (IOException e) {
-            //e.printStackTrace();
             data="dataSource";
         }
         return data;
