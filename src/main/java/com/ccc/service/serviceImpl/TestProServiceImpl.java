@@ -23,12 +23,7 @@ public class TestProServiceImpl  implements TestProcService{
 
 
     @Override
-    public List<TestProc> getProc(Map<String,Object> map) {
-        List<TestProc> testProcList=new ArrayList<>();
-        testProcList=procDao.getProc(map);
-
-
-
-        return testProcList;
+    public void getProc(Map<String,Object> map) {
+         procDao.getProc(map);
     }
 }

@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- TestProcDao -->
 <mapper namespace="com.ccc.dao.TestProcDao">
-
-
-
-    <resultMap type="java.util.HashMap" id="resultMap">
-        <result column="P_OUT1" property="P_OUT1" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-        <result column="P_OUT2" property="P_OUT2" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-    </resultMap>
-    <select id="getProc" statementType="CALLABLE" parameterType="java.util.HashMap" resultMap="resultMap">
+    <select id="getProc" statementType="CALLABLE" parameterType="java.util.HashMap">
        call TEST_PROC(
               #{P_IN1,mode=IN,jdbcType=INTEGER},
               #{P_IN2,mode=IN,jdbcType=INTEGER},

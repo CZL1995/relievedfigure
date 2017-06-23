@@ -11,5 +11,5 @@ import java.util.Map;
  */
 @Repository
 public interface TestProcDao {
-    List<TestProc> getProc(Map<String,Object> map);
+    void getProc(Map<String,Object> map);
 }

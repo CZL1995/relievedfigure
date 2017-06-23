@@ -1,13 +1,9 @@
 package com.ccc.base;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 
 /**
@@ -37,6 +33,7 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
             }
             in.close();
         } catch (IOException e) {
+
             data="dataSource";
         }
         return data;

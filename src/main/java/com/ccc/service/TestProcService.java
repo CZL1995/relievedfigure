@@ -10,6 +10,6 @@ import java.util.Map;
  * Created by Caozl on 2017-06-14.
  */
 public interface TestProcService {
-    public List<TestProc> getProc(Map<String,Object> map);
+     void getProc(Map<String,Object> map);
 
 }
