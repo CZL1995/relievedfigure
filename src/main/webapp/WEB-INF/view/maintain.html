@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>维护</title>
+    <script src="/relievedfigure/resources/js/jquery-1.10.2.min.js"></script>
+
+</head>
+<body>
+<form id="submitText" action="http://localhost:28888/relievedfigure/maintain/submitText" method="post" enctype="multipart/form-data">
+    选择文件:<input id="txtFileName" type="file" name="file" width="120px">
+    <input id="submitTextButton" type="button" value="上传">
+</form>
+<form id="submitExcel" action="http://localhost:28888/relievedfigure/maintain/submitExcel" method="post" enctype="multipart/form-data">
+    选择文件:<input id="excelFileName" type="file" name="file" width="120px">
+    <input id="submitExcelButton" type="button" value="上传">
+</form>
+</body>
+<script>
+    $("#submitTextButton").click(function () {
+        var txtFileName=$("#txtFileName").val();
+        var strff = txtFileName.substring(txtFileName.lastIndexOf(".")).toLowerCase();
+        if (strff!=".txt"){
+            alert("请选择txt文件");
+        }else {
+            $("#submitText").submit();
+        }
+    })
+    $("#submitExcelButton").click(function () {
+        debugger;
+        var excelFileName=$("#excelFileName").val();
+        var strff = excelFileName.substring(excelFileName.lastIndexOf(".")).toLowerCase();
+        if (strff==".xls"||strff==".xlsx"){
+            $("#submitExcel").submit();
+        }else {
+            alert("请选择excel文件");
+
+        }
+    })
+
+
+
+</script>
+
+
+
+</html>

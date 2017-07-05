@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
@@ -10,28 +11,33 @@
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:annotation-config />
+    <context:annotation-config/>
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
     <!-- 扫描web相关的bean -->
-    <context:component-scan base-package="com.ccc"/>
+    <context:component-scan base-package="com.asiainfo.relievedfigure"/>
 
     <!-- Register "global" interceptor beans to apply to all registered HandlerMappings -->
     <mvc:interceptors>
-        <bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor" />
+        <bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
-              p:paramName="lang" />
+              p:paramName="lang"/>
     </mvc:interceptors>
-    <bean
-            class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
 
     <!-- request -->
-    <bean
-            class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
     <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
     <!-- 将静态文件指定到某个特殊的文件夹中统一处理 -->
-    <mvc:resources location="/resources/" mapping="/resources/**" />
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
+    <!--文件上传-->
+    <!-- 文件上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000" />
+        <!-- 10M -->
+    </bean>
 
     <!-- 添加对图片、字节、字符串、XML及json数据格式的支持 -->
     <bean id="messageAdapter"
@@ -40,25 +46,20 @@
             <list>
 
                 <bean
-                        class="org.springframework.http.converter.StringHttpMessageConverter" />
-                <bean class="org.springframework.http.converter.FormHttpMessageConverter" />
+                        class="org.springframework.http.converter.StringHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
                 <bean
-                        class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+                        class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
                 <bean
-                        class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+                        class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
                 <bean
-                        class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+                        class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
                 <bean
-                        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+                        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
             </list>
         </property>
     </bean>
-    <!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理 -->
-    <mvc:resources location="/resources/" mapping="/resources/**" />
-    <mvc:resources mapping="/image/**" location="/resources/image/" />
-    <mvc:resources mapping="/css/**" location="/resources/css/" />
-    <mvc:resources mapping="/js/**" location="/resources/js/" />
-    <mvc:resources mapping="/view/**" location="/WEB-INF/view/"  />
+
     <mvc:default-servlet-handler/>
     <!--启动Spring MVC的注解功能,设置编码方式，防止乱码 -->
     <bean
@@ -76,14 +77,20 @@
             </list>
         </property>
     </bean>
+    <!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理 -->
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
+    <mvc:resources mapping="/image/**" location="/resources/image/"/>
+    <mvc:resources mapping="/css/**" location="/resources/css/"/>
+    <mvc:resources mapping="/js/**" location="/resources/js/"/>
+    <mvc:resources mapping="/view/**" location="/WEB-INF/view/"/>
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
-  <!--  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        &lt;!&ndash;<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />&ndash;&gt;
-        <property name="prefix" value="/WEB-INF/view/" />
-        <property name="suffix" value=".jsp" />
-    </bean>-->
+    <!--  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+          &lt;!&ndash;<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />&ndash;&gt;
+          <property name="prefix" value="/WEB-INF/view/" />
+          <property name="suffix" value=".jsp" />
+      </bean>-->
 
-   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".html"/>

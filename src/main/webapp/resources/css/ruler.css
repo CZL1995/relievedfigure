@@ -1,0 +1,63 @@
+.rulerWrapper .rulerPointer {
+    position: absolute;
+    left: 50%;
+    width: .625rem;
+    height: .625rem;
+    margin-left: -.3125rem;
+    background-image: url(/relievedfigure/resources/image/mark.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    top: .3125rem;
+}
+
+.rulerWrapper {
+    /* background: #f7704c; */
+    height: 3.3125rem;
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.rulerWrapper .rulerScroller {
+    position: absolute;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: flex;
+    left: -.3125rem;
+}
+
+.rulerWrapper .rulerScroller ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    padding: 0;
+    width: 3.125rem;
+    height: .75rem;
+    float: left;
+    border-right: 1px solid rgba(76, 94, 112, 0.20);
+    position: relative;
+    padding-top: .1875rem;
+}
+
+.rulerWrapper .rulerScroller li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    width: .3125rem;
+    float: left;
+    border-right: 1px solid rgba(76, 94, 112, 0.20);
+    height: .375rem;
+}
+
+.rulerWrapper .doTime span {
+    margin-left: -.46875rem;
+}
+
+.rulerWrapper .sizeNo {
+    position: absolute;
+    color: rgba(76, 94, 112, 0.50);
+    top: 1.09375rem;
+    display: block;
+    text-align: center;
+    font-size: .34375rem;
+}

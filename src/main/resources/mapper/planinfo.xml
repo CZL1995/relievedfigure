@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.relievedfigure.dao.PlanInfoDao">
+
+
+    <insert id="insertPlanInfo" parameterType="com.asiainfo.relievedfigure.model.PlanInfo">
+        insert into plan_info (plan_name, plan_type, type_id,group_list,plan_price,voice,PriceVoicej1,
+        flow,PriceFlowj1,flowj1,PriceFlowj2,flowj2,if_share
+        )
+        values (#{planName,jdbcType=VARCHAR}, #{planType,jdbcType=VARCHAR},
+         #{planId,jdbcType=INTEGER},#{groupList,jdbcType=VARCHAR},
+         #{planPrice,jdbcType=INTEGER},#{voice,jdbcType=INTEGER},
+         #{priceVoicej1,jdbcType=INTEGER},#{flow,jdbcType=INTEGER},
+         #{priceFlowj1,jdbcType=INTEGER},#{flowj1,jdbcType=INTEGER},
+         #{priceFlowj2,jdbcType=INTEGER},#{flowj2,jdbcType=INTEGER},
+         #{ifShare,jdbcType=INTEGER}
+        )
+    </insert>
+</mapper>

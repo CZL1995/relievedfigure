@@ -1,29 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CH">
+
 <head>
-    <meta charset="UTF-8">
-    <title>简单测试</title>
-    <script src="/relievedfigure/resources/js/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title></title>
+	<link rel="shortcut icon" href="/relievedfigure/resources/image/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="/relievedfigure/resources/css/style.css">
+	<link rel="stylesheet" href="/relievedfigure/resources/css/ruler.css">
 </head>
+
 <body>
-<br>
-<br>
-<br>
-<div>
-    <br>
-    <button id="simpleTest">简单测试</button>
-    <br>
-    <button id="proTest">存储过程测试</button>
-</div>
-<script>
-
-    $("#simpleTest").click(function () {
-        window.location = "/relievedfigure/view/userTest.html";
-    });
-    $("#proTest").click(function () {
-        window.location = "/relievedfigure/view/proTest.html";
-    });
-</script>
-
+	<div class="wrap">
+		<p class="p-header">请输入您要查询的用量情况：</p>
+		<div class="box slid-box">
+			<div class="slid-sel">
+				<p>国内流量</p>
+				<div>
+					<input class="txt-p" id="flow" type="text">
+					<span>MB</span>
+				</div>
+			</div>
+			<div class="mark-wrap " id="flowW"></div>
+		</div>
+		<div class="box slid-box">
+			<div class="slid-sel">
+				<p>语音时长</p>
+				<div>
+					<input class="txt-p" id="voice" type="text">
+					<span>分钟</span>
+				</div>
+			</div>
+			<div class="mark-wrap" id="voiceW"></div>
+		</div>
+		<div class="btn-center">
+			<button class="btn btn-blue recommend" type="button">推荐</button>
+		</div>
+		<div class="tab">
+			<ul class="tab-header">
+				<li>
+					<p class="active">最优推荐</p>
+				</li>
+				<li>
+					<p>其他用户常用套餐</p>
+				</li>
+			</ul>
+			<div class="tab-con">
+				<div class="block">
+					<p class="one-p">此处根据您查询的用量情况，向您推荐最优套餐组合。</p>
+					<div class="box">
+						<p class="p-header">向您推荐最优套餐组合：</p>
+						<div id="recommendF"></div>
+					</div>
+					<div class="box">
+						<p class="p-header">推荐套餐对比：</p>
+						<div id="linkTable"></div>
+					</div>
+				</div>
+				<div>
+					<p class="one-p">此处根据您查询的用量情况，向您推荐同等消费的其他用户最常用的套餐组合。</p>
+					<div class="box">
+						<p class="p-header">向您推荐同等消费的其他用户常用套餐组合：</p>
+						<div id="recommendF1"></div>
+					</div>
+					<div class="box">
+						<p class="p-header">推荐套餐对比：</p>
+						<div id="linkTable1"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--javascript-->
+	<script src="/relievedfigure/resources/js/flexible.js"></script>
+	<script src="/relievedfigure/resources/js/jquery-1.10.2.min.js"></script>
+	<script src="/relievedfigure/resources/js/ruler.js"></script>
+	<script src="/relievedfigure/resources/js/index.js"></script>
 </body>
+
 </html>

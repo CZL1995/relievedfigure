@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-                                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                              xmlns:context="http://www.springframework.org/schema/context"
-                                              xmlns:tx="http://www.springframework.org/schema/tx"
-                                              xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- 扫描service包下所有使用注解的类型 -->
-    <context:component-scan base-package="com.ccc.service"/>
+    <context:component-scan base-package="com.asiainfo.relievedfigure.service"/>
 
     <!-- 配置数据库相关参数properties的属性：${url} -->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 引入数据库配置文件 -->
+    <bean id="propertyConfigurer"    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
     <!-- 数据库连接池 -->
     <bean id="dataSource1" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver1}"/>
@@ -38,7 +46,7 @@
         <property name="acquireRetryAttempts" value="${c3p0.acquireRetryAttempts}"/>
     </bean>
 
-    <bean id="dataSource2" class="com.ccc.base.DynamicDataSource">
+    <bean id="dataSource2" class="com.asiainfo.relievedfigure.base.DynamicDataSource">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
                 <entry key="dataSource" value-ref="dataSource" />
@@ -54,16 +62,38 @@
         <!-- 注入数据库连接池 -->
         <property name="dataSource" ref="dataSource2"/>
         <!-- 扫描model包 使用别名 -->
-        <property name="typeAliasesPackage" value="com.ccc.model"/>
+        <property name="typeAliasesPackage" value="com.asiainfo.relievedfigure.model"/>
         <!-- 扫描sql配置文件:mapper需要的xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!-- 开启缓存支持 -->
+        <property name="configurationProperties">
+            <props>
+                <prop key="cacheEnabled">true</prop>
+                <!-- 查询时，关闭关联对象即时加载以提高性能 -->
+                <prop key="lazyLoadingEnabled">false</prop>
+                <!-- 设置关联对象加载的形态，此处为按需加载字段(加载字段由SQL指定)，不会加载关联表的所有字段，以提高性能 -->
+                <prop key="aggressiveLazyLoading">true</prop>
+                <!-- 对于未知的SQL查询，允许返回不同的结果集以达到通用的效果 -->
+                <prop key="multipleResultSetsEnabled">true</prop>
+                <!-- 允许使用列标签代替列名 -->
+                <prop key="useColumnLabel">true</prop>
+                <!-- 允许使用自定义的主键值(比如由程序生成的UUID 32位编码作为键值)，数据表的PK生成策略将被覆盖 -->
+                <prop key="useGeneratedKeys">true</prop>
+                <!-- 给予被嵌套的resultMap以字段-属性的映射支持 -->
+                <prop key="autoMappingBehavior">FULL</prop>
+                <!-- 对于批量更新操作缓存SQL以提高性能 -->
+                <prop key="defaultExecutorType">BATCH</prop>
+                <!-- 数据库超过25000秒仍未响应则超时 -->
+                <prop key="defaultStatementTimeout">25000</prop>
+            </props>
+        </property>
     </bean>
     <!-- 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 注入sqlSessionFactory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 给出需要扫描Dao接口包 -->
-        <property name="basePackage" value="com.ccc.dao"/>
+        <property name="basePackage" value="com.asiainfo.relievedfigure.dao"/>
     </bean>
     <!--这样就可以直接使用SQLSession了-->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

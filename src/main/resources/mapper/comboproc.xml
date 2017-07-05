@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.relievedfigure.dao.ComboProcDao">
+    <select id="getProc" statementType="CALLABLE" parameterType="java.util.HashMap">
+       call SP_RECOMMEND_PLAN(
+              #{IN_FLOW,mode=IN,jdbcType=INTEGER},
+              #{IN_VOICE,mode=IN,jdbcType=INTEGER},
+              #{OUT_PLAN11,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_TOTALFEE11,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLAN12,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_TOTALFEE12,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLAN13,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_TOTALFEE13,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOW11,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOWPRICE11,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICE11,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICEPRICE11,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLANFEE11,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOW12,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOWPRICE12,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICE12,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICEPRICE12,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLANFEE12,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOW13,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOWPRICE13,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICE13,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICEPRICE13,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLANFEE13,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLAN21,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_TOTALFEE21,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLAN22,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_TOTALFEE22,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLAN23,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_TOTALFEE23,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOW21,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOWPRICE21,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICE21,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICEPRICE21,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLANFEE21,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOW22,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOWPRICE22,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICE22,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICEPRICE22,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLANFEE22,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOW23,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_FLOWPRICE23,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICE23,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_VOICEPRICE23,mode=OUT,jdbcType=VARCHAR},
+              #{OUT_PLANFEE23,mode=OUT,jdbcType=VARCHAR}
+              )
+           </select>
+</mapper>
